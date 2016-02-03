@@ -1,0 +1,97 @@
+
+body{
+    width:992px; 
+    margin:0 auto; 
+    
+     
+    
+}
+
+.pfoto{
+    float: left;
+}
+
+.log{
+    float:right; 
+    padding:10px; 
+    padding-right: 20px; 
+}
+
+.menu{
+    padding-top: 130px; 
+                
+}
+
+ul{
+    list-style-type: none; 
+    
+    
+}
+
+
+.pic_1{
+    float:left; 
+    padding:10px; 
+}
+
+#main_container{
+    padding:5px;
+    padding-top:15px; 
+    margin: 0px;
+    width:700px; 
+    height: auto; 
+    display:inline-block;  
+    float:left; 
+     
+    
+}
+
+.section_1{
+    float:left; 
+    background-color: grey; 
+    padding:10px; 
+}
+
+.section_2{
+    clear: left;
+    margin-right:50px; 
+    width:280px; 
+     
+    background-color: aqua;
+}
+
+#aside_container{
+    display:inline-block; 
+    float:left; 
+    width: 280px;
+}
+.buttons{
+    padding-bottom: 10px; 
+    text-align:center; 
+}
+.logo+profile{
+     
+    
+}
+.header{
+    height:190px;
+    background-color: bisque;
+    
+    
+}
+.tagline{
+    
+    clear: left;
+    
+    
+}
+li{
+    padding:10px; 
+}
+.buttons{
+    margin:0 auto; 
+    list-style-type:none;
+    display:block;
+    width:30%; 
+    
+}
