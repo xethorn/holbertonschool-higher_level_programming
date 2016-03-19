@@ -12,4 +12,4 @@ response =  http.get_content ('https://api.github.com/search/repositories?q=lang
 
 parsed = JSON.parse(response)
 
-parsed["items"].map{|e| puts e["full_name"]}.join
+parsed["items"].map {|e| puts e["full_name"]}.join
