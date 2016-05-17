@@ -1,17 +1,13 @@
-import math
-'''Class'''
-class Circle():
-
-    ''' Constructor '''
-    def __init__(self,radius):
+class Square(object):
+    '''Constructor'''
+    def __init__(self, side_length):
         # private attributes
-        self.__radius = radius
+        self.__side_length = side_length
         self.__center = [0,0]
         self.__color = " "
         # public attributes
         self.name = " "
 
-    ''' Destructor '''
     def __del__(self):
         pass
 
@@ -20,7 +16,7 @@ class Circle():
         return self.__color
 
     ''' Setter '''
-    def set_color(self, color):
+    def set_color(self,color):
         self.__color = color
 
     ''' Getter '''
@@ -29,9 +25,14 @@ class Circle():
 
     ''' Setter '''
     def set_center(self, center):
-        self._center = center
+        self.__center = center
 
-    ''' Public Method '''
     def area(self):
-        x = self.__radius**2 * math.pi
+        x = self.__side_length**2
         return x
+
+def a():
+    for i in range(0,4):
+        if i == 0:
+            for j in range(0,self.__side_length):
+                return "*",
