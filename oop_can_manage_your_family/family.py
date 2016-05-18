@@ -61,3 +61,13 @@ class Person():
         return age
     def __gt__(self,other):
         return (self.age() > other.age())
+    def __eq__(self, other):
+        return(self.age() == other.age())
+    def __ne__(self, other):
+        return (self.age() != other.age())
+    def __ge__(self, other):
+        return (self.age >= other.age())
+    def __lt__(self, other):
+        return (self.age < other.age())
+    def __le__(self, other):
+        return (self.age <= other.age())
