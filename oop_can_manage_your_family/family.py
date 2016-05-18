@@ -59,3 +59,5 @@ class Person():
         today = date.today()
         age = today.year - self.__date_of_birth[2] - ( (today.month, today.day) < (self.__date_of_birth[1], self.__date_of_birth[0]))
         return age
+    def __gt__(self,other):
+        return (self.age() > other.age())
