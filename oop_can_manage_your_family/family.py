@@ -3,7 +3,7 @@ class Person():
     GENRES = ["Female", "Male"]
     def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
         ''' Private '''
-        if id < 0:
+        if id < 0 and isinstance(id, int):
             raise Exception("id is not an integer")
         self.__id = id
 
@@ -15,15 +15,12 @@ class Person():
             raise Exception("genre is not valid")
         self.__genre = genre
 
-        #if date_of_birth is not [,,]:
-        #for i in date_of_birth:
-             #if i.isdigit():
-        self.__date_of_birth = date_of_birth
-             #else:
-                #raise Exception("date_of_birth is not a valid date")
+        if len(date_of_birth) is 3 and all(isinstance (n, int) for n in date_of_birth):
+            self.__date_of_birth = date_of_birth
+        else:
+            raise Exception("date_of_birth is not a valid date")
 
-
-        if first_name is " ":
+        if first_name is " " and isinstance(first_name, str):
             raise Exception("string is not a string")
         self.__first_name = first_name
 
