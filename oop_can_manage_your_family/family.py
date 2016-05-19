@@ -100,7 +100,7 @@ class Person():
 def save_to_file(list, filename):
 
     try:
-        target = open(filename, 'w')
+        target = open(filename, 'wr+')
         json.dump(list, target)
         target.close()
     except:
@@ -111,14 +111,9 @@ def load_from_file(filename):
 
     with open(filename) as data_file:
         return json.load(data_file)
-    #with open(filename) as data_file:
-    #    data = data_file.read()
-    #    jsondata= json.loads(data)
-    #return jsondata
+
 class Baby(Person):
     ''' '''
-    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
-    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return False
     def need_help(self):
@@ -129,8 +124,6 @@ class Baby(Person):
         return False
 class Teenager(Person):
     ''' '''
-    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
-    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return True
     def need_help(self):
@@ -140,8 +133,6 @@ class Teenager(Person):
     def can_vote(self):
         return False
 class Adult(Person):
-    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
-    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return True
     def need_help(self):
@@ -151,8 +142,6 @@ class Adult(Person):
     def can_vote(self):
         return True
 class Senior(Person):
-    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
-    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return False
     def need_help(self):
