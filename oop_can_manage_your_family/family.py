@@ -1,4 +1,6 @@
+from sys import argv
 from datetime import date
+import json
 class Person():
     EYES_COLORS = ["Blue", "Green", "Brown"]
     GENRES = ["Female", "Male"]
@@ -74,10 +76,10 @@ class Person():
 
     ''' Creating a diccionary '''
     def json(self):
-        dicc = {
-        'id': self.__id,
+        dicc ={
+        'id':self.__id,
         'eyes_color':self.__eyes_color,
-        'genre':self.__genre ,
+        'genre':self.__genre,
         'date_of_birth':self.__date_of_birth,
         'first_name':self.__first_name,
         'last_name':self.last_name
@@ -97,10 +99,26 @@ class Person():
 
 def save_to_file(list, filename):
 
+    try:
+        target = open(filename, 'w')
+        json.dump(list, target)
+        target.close()
+    except:
+        print 'could not load', filename
+        pass
 
+def load_from_file(filename):
 
+    with open(filename) as data_file:
+        return json.load(data_file)
+    #with open(filename) as data_file:
+    #    data = data_file.read()
+    #    jsondata= json.loads(data)
+    #return jsondata
 class Baby(Person):
     ''' '''
+    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return False
     def need_help(self):
@@ -111,6 +129,8 @@ class Baby(Person):
         return False
 class Teenager(Person):
     ''' '''
+    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return True
     def need_help(self):
@@ -120,6 +140,8 @@ class Teenager(Person):
     def can_vote(self):
         return False
 class Adult(Person):
+    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return True
     def need_help(self):
@@ -129,6 +151,8 @@ class Adult(Person):
     def can_vote(self):
         return True
 class Senior(Person):
+    #def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+    #    Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
     def can_run(self):
         return False
     def need_help(self):

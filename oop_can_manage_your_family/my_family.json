@@ -1,0 +1,21 @@
+[{
+  "first_name": "Hello World",
+  "id": 1,
+  "genre": "Male",
+  "eyes_color": "Blue",
+  "date_of_birth": [
+    12,
+    "1",
+    1980
+  ]
+},{
+  "first_name": "Hello World",
+  "id": 1,
+  "genre": "Male",
+  "eyes_color": "Blue",
+  "date_of_birth": [
+    12,
+    "1",
+    1980
+  ]
+}]
