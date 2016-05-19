@@ -88,8 +88,8 @@ class Person():
 
     ''' loading json'''
     def load_from_json(self, json):
-        if json is not hash:
-            raise Exception("json is not valid")
+    #    if json is not dict:
+    #        raise Exception("json is not valid")
         self.__id = json['id']
         self.__eyes_color = json['eyes_color']
         self.__genre = json['genre']
@@ -99,18 +99,28 @@ class Person():
 
 def save_to_file(list, filename):
 
-    try:
-        target = open(filename, 'wr+')
-        json.dump(list, target)
-        target.close()
-    except:
-        print 'could not load', filename
-        pass
+    #try:
+        list_of_json_strings = []
+        print list
+        #target = open(filename, 'w')
+        with open(filename, 'w'):
+            for i in list:
+                print i.json()
+                list_of_json_strings.append(i.json())
+            json.dump(list_of_json_strings, filename)
+    #except:
+    ##    pass
 
 def load_from_file(filename):
-
-    with open(filename) as data_file:
-        return json.load(data_file)
+    data = []
+    p = Person(1, "Julien", [12, 24, 1980], "Male", "Blue")
+    with open(filename, 'r') as data_file:
+        a = json.load(data_file)
+        print a
+        for line in a:
+            p.load_from_json(line)
+            data.append(p)
+        return data
 
 class Baby(Person):
     ''' '''
