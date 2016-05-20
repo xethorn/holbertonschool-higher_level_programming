@@ -30,6 +30,7 @@ class Person():
 
         ''' Public '''
         self.last_name = " "
+        self.is_married_to = 0
 
     ''' Getters '''
     def get_id(self):
@@ -82,7 +83,8 @@ class Person():
         'genre':self.__genre,
         'date_of_birth':self.__date_of_birth,
         'first_name':self.__first_name,
-        'last_name':self.last_name
+        'last_name':self.last_name,
+        'is_married_to':self.is_married_to
         }
         return dicc
 
@@ -96,6 +98,115 @@ class Person():
         self.__date_of_birth = json['date_of_birth']
         self.__first_name = json['first_name']
         self.last_name = json['last_name']
+        self.is_married_to = json['is_married_to']
+
+
+class Baby(Person):
+    ''' '''
+    def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+        Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
+    def can_run(self):
+        return False
+    def need_help(self):
+        return True
+    def is_young(self):
+        return True
+    def can_vote(self):
+        return False
+    '''Begining of the marriage methods'''
+    def can_be_married(self):
+        return False
+    def is_married(self):
+        if self.is_married_to is not 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        return False
+    def just_married_with(self, p):
+        return False
+class Teenager(Person):
+    ''' '''
+    def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+        Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
+    def can_run(self):
+        return True
+    def need_help(self):
+        return False
+    def is_young(self):
+        return True
+    def can_vote(self):
+        return False
+    '''Begining of the marriage methods'''
+    #returns true if is adult or senior
+    def can_be_married(self):
+        return False
+    #returns false if is_married_to = 0
+    def is_married(self, p):
+        if self.is_married_to is not 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        return False
+    def just_married_with(self, p):
+        return False
+class Adult(Person):
+    def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+        Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
+    def can_run(self):
+        return True
+    def need_help(self):
+        return False
+    def is_young(self):
+        return False
+    def can_vote(self):
+        return True
+    '''Begining of the marriage methods'''
+    #returns true if is adult or senior
+    def can_be_married(self):
+        return True
+    #returns false if is_married_to = 0
+    def is_married(self):
+        if self.is_married_to is not 0:
+            return True
+        else:
+            return False
+    #will unlink 2 persons => assign is_married_to of each person to 0. Don't change the last_name, it's too late!
+    def divorce(self, p):
+        ''''''
+        self.is_married_to = 0
+        p.is_married_to = 0
+
+    def just_married_with(self, p):
+        ''''''
+        self.is_married_to = p.__id
+class Senior(Person):
+    def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
+        Person.__init__(self, id, first_name, date_of_birth, genre, eyes_color)
+    def can_run(self):
+        return False
+    def need_help(self):
+        return True
+    def is_young(self):
+        return False
+    def can_vote(self):
+        return True
+    def can_be_married(self):
+        return True
+    '''Begining of the marriage methods'''
+    def is_married(self):
+        if self.is_married_to is not 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        ''''''
+        self.is_married_to = 0
+        p.is_married_to = 0
+    def just_married_with(self, p):
+        ''''''
+        self.is_married_to = p.__id
 
 def save_to_file(list, filename):
     with open(filename, 'w') as outfile:
@@ -104,55 +215,12 @@ def save_to_file(list, filename):
             list_of_json_strings.append(i.json())
         outfile.write(json.dumps(list_of_json_strings,indent = 2))
 
-    #except:
-    ##    pass
-
 def load_from_file(filename):
     data = []
     p = Person(1, "Julien", [12, 24, 1980], "Male", "Blue")
     with open(filename, 'r') as data_file:
         a = json.load(data_file)
-        #print a
         for line in a:
             p.load_from_json(line)
             data.append(p)
         return data
-
-class Baby(Person):
-    ''' '''
-    def can_run(self):
-        return False
-    def need_help(self):
-        return True
-    def is_young(self):
-        return True
-    def can_vote(self):
-        return False
-class Teenager(Person):
-    ''' '''
-    def can_run(self):
-        return True
-    def need_help(self):
-        return False
-    def is_young(self):
-        return True
-    def can_vote(self):
-        return False
-class Adult(Person):
-    def can_run(self):
-        return True
-    def need_help(self):
-        return False
-    def is_young(self):
-        return False
-    def can_vote(self):
-        return True
-class Senior(Person):
-    def can_run(self):
-        return False
-    def need_help(self):
-        return True
-    def is_young(self):
-        return False
-    def can_vote(self):
-        return True
