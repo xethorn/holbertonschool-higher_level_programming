@@ -101,6 +101,28 @@ class Person():
         self.is_married_to = json['is_married_to']
 
 
+def save_to_file(list, filename):
+    with open(filename, 'w') as outfile:
+        list_of_json_strings = []
+        for i in list:
+            list_of_json_strings.append(i.json())
+        outfile.write(json.dumps(list_of_json_strings,indent = 2))
+
+    #except:
+    ##    pass
+
+def load_from_file(filename):
+    data = []
+    p = Person(1, "Julien", [12, 24, 1980], "Male", "Blue")
+    with open(filename, 'r') as data_file:
+        a = json.load(data_file)
+        #print a
+        for line in a:
+            p.load_from_json(line)
+            data.append(p)
+        return data
+
+
 class Baby(Person):
     ''' '''
     def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
