@@ -98,16 +98,12 @@ class Person():
         self.last_name = json['last_name']
 
 def save_to_file(list, filename):
-
-    #try:
+    with open(filename, 'w') as outfile:
         list_of_json_strings = []
-        print list
-        #target = open(filename, 'w')
-        with open(filename, 'w'):
-            for i in list:
-                print i.json()
-                list_of_json_strings.append(i.json())
-            json.dump(list_of_json_strings, filename)
+        for i in list:
+            list_of_json_strings.append(i.json())
+        outfile.write(json.dumps(list_of_json_strings,indent = 2))
+
     #except:
     ##    pass
 
@@ -116,7 +112,7 @@ def load_from_file(filename):
     p = Person(1, "Julien", [12, 24, 1980], "Male", "Blue")
     with open(filename, 'r') as data_file:
         a = json.load(data_file)
-        print a
+        #print a
         for line in a:
             p.load_from_json(line)
             data.append(p)
